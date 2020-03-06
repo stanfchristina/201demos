@@ -1,0 +1,24 @@
+/* 
+ * Global style sheet for the section demo application.
+ * This .css file needs to be within a directory named "www"
+ * for Shiny to be able to find it and correctly use it.
+ * See my code at the bottom of app_ui.R for how to apply these
+ * styles throughout your application.
+ * A tutorial can be found at https://shiny.rstudio.com/articles/css.html
+*/
+
+h2 {
+  color: #ffffff;
+}
+
+p {
+  color: #ffffff;
+}
+
+.navbar {
+  background-color: #3a3a3c;
+}
+
+body {
+  background-color: #48484a;
+}

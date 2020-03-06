@@ -1,0 +1,12 @@
+name: shiny
+title: shiny
+username:
+account: stanfchristina
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1490876
+bundleId: 2858738
+url: https://stanfchristina.shinyapps.io/shiny/
+when: 1583534681.80286
+asMultiple: FALSE
+asStatic: FALSE
