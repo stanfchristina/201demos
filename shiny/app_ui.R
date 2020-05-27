@@ -29,10 +29,12 @@ map_main_panel <- mainPanel(
   # "seattle_map" exactly corresponds to "output$seattle_map" in app_server.R
   leafletOutput("seattle_map"),
   # One way to add analysis text underneath your visualizations.
-  HTML("<p>Select your favorite Seattle neighborhood and see where Airbnbs are being rented.</p>
-        <br>
-        <p>Some insights...</p>"
-  )
+  br(),
+  h4("Introduction"),
+  p("Select your favorite Seattle neighborhood to see where Airbnbs are being rented."),
+  br(),
+  h4("Insights"),
+  p("Some insights...")
 )
 
 map_tab_panel <- tabPanel(
@@ -91,6 +93,7 @@ scatter_sidebar_panel <- sidebarPanel(
 )
 
 scatter_main_panel <- mainPanel(
+  # Notice this is a plotOutput() not a plotlyOutput() because we used ggplot.
   plotOutput("price_scatter")
 )
 
@@ -103,17 +106,34 @@ scatter_tab_panel <- tabPanel(
   )
 )
 
-# Put each tab panel together on a common navbar.
-# Wrap navbarPage in a tagList() so we can apply custom
-# styles we defined in styles.css to the entire application.
-# If you don't need styling, omit and just set ui <- navbarPage(...)
-
-ui <- tagList(
-  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")),
-  navbarPage(
-    "Section Demo",
-    map_tab_panel,
-    bar_tab_panel,
-    scatter_tab_panel
+introduction_panel <- tabPanel(
+  "Introduction",
+  mainPanel(
+    h2("Demo Introduction"),
+    p("I made this because when I was learning Shiny there were way too many examples
+      I found that didn't make a lot of sense and differed greatly from each other in how
+      they setup the UI, organized layout elements, linked stylesheets, etc. I tried to make
+      this demo super clean and as easy to follow along with as possible. Hope it helps!"),
+    br(),
+    # How to include an image on a page.
+    # The image must be in the www/ directory for Shiny to find it.
+    img(description = "UW symbol",
+        src = "uw.png",
+        align = "left",
+        width = "256px",
+        height = "164px")
   )
+)
+
+# Put each tab panel together on a common navbar.
+# Provide the theme parameter with the name of our stylesheet
+# to apply custom styles throughout the application.
+
+ui <- navbarPage(
+  theme = "styles.css",
+  "Section Demo",
+  introduction_panel,
+  map_tab_panel,
+  bar_tab_panel,
+  scatter_tab_panel
 )
